@@ -14,5 +14,8 @@ namespace ah799415MIS4200.DAL
         }
         public DbSet<Orders> Orders { get; set; }
         public DbSet<customer> Customer { get; set; }
+        public DbSet<customer> Product { get; set; }
+        public DbSet<customer> OrderDetails { get; set; }
+        public System.Data.Entity.DbSet<ah799415MIS4200.Models.Product> Products { get; set; }
     }
 }
