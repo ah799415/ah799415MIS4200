@@ -5,16 +5,16 @@ using System.Web;
 
 namespace ah799415MIS4200.Models
 {
-    public class OrderDetail
+    public class AppointmentDetail
     {
-        public int orderdetailID { get; set; }
+        public int appointmentdetailID { get; set; }
         public int qtyOrdered { get; set; }
         public decimal price { get; set; }
         // the next two properties link the orderDetail to the Order
-        public int orderID { get; set; }
-        public virtual Orders Order { get; set; }
+        public int visitID { get; set; }
+        public virtual Visits Visits { get; set; }
         // the next two properties link the orderDetail to the Product
-        public int productID { get; set; }
-        public virtual Product Product { get; set; }
+        public int vetID { get; set; }
+        public virtual Vet Vet { get; set; }
     }
 }

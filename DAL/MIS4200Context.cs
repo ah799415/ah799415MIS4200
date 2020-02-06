@@ -12,10 +12,10 @@ namespace ah799415MIS4200.DAL
         public MIS4200Context(): base ("nameDefaultConnection")
         {
         }
-        public DbSet<Orders> Orders { get; set; }
-        public DbSet<customer> Customer { get; set; }
-        public DbSet<customer> Product { get; set; }
-        public DbSet<customer> OrderDetails { get; set; }
-        public System.Data.Entity.DbSet<ah799415MIS4200.Models.Product> Products { get; set; }
+        public DbSet<Visits> Visits { get; set; }
+        public DbSet<Pet> Pet { get; set; }
+        public DbSet<Pet> Vet { get; set; }
+        public DbSet<Pet> AppointmentDetails { get; set; }
+        public System.Data.Entity.DbSet<ah799415MIS4200.Models.Vet> Vets { get; set; }
     }
 }
