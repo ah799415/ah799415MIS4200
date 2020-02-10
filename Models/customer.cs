@@ -5,19 +5,19 @@ using System.Web;
 
 namespace ah799415MIS4200.Models
 {
-    public class customer
+    public class Pet
     {
-        public int customerID { get; set; }
-        public string customerFirstName { get; set; }
-        public string customerLastName { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public DateTime customerSince { get; set; }
-        public ICollection<Orders> Orders { get; set; }
-        public string fullName { 
+        public int petID { get; set; }
+        public string ownerFirstName { get; set; }
+        public string ownerLastName { get; set; }
+        public string petName { get; set; }
+        public string ownerPhone { get; set; }
+        public DateTime patientSince { get; set; }
+        public ICollection<Visit> Visit { get; set; }
+        public string ownerFullName { 
             get
             {
-                return customerLastName + " , " + customerFirstName;
+                return ownerLastName + " , " + ownerFirstName;
             }
                 }
 
