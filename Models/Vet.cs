@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ah799415MIS4200.Models
 {
-    public class Vet
+    public class Vets
     {
         public int vetID { get; set; }
         public string vetDescription { get; set; }

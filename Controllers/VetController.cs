@@ -28,7 +28,7 @@ namespace ah799415MIS4200.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vet Vet = db.Vets.Find(id);
+            Vets Vet = db.Vets.Find(id);
             if (Vet == null)
             {
                 return HttpNotFound();
@@ -47,11 +47,11 @@ namespace ah799415MIS4200.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "vetID,vetDescription,vetCost")] Vet Vet)
+        public ActionResult Create([Bind(Include = "vetID,vetDescription,vetCost")] Vets Vet)
         {
             if (ModelState.IsValid)
             {
-                db.Vets.Add(Vet);
+                db.Vets.Add(vet);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace ah799415MIS4200.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vet Vet = db.Vets.Find(id);
+            Vets Vet = db.Vets.Find(id);
             if (Vet == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace ah799415MIS4200.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "vetID,vetDescription,vetCost")] Vet Vet)
+        public ActionResult Edit([Bind(Include = "vetID,vetDescription,vetCost")] Vets Vet)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace ah799415MIS4200.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vet Vet = db.Vets.Find(id);
+            Vets Vet = db.Vets.Find(id);
             if (Vet == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace ah799415MIS4200.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Vet Vet = db.Vets.Find(id);
-            db.Vets.Remove(Vet);
+            Vets Vet = db.Vets.Find(id);
+            db.Vets.Remove(Vets);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
