@@ -12,7 +12,7 @@ namespace ah799415MIS4200.DAL
         public MIS4200Context(): base ("nameDefaultConnection")
         {
         }
-        public DbSet<Visit> Visits { get; set; }
+        public DbSet<Visits> Visits { get; set; }
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Vet> Vets { get; set; }
         public DbSet<AppointmentDetail> AppointmentDetails { get; set; }

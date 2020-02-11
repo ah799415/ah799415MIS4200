@@ -40,7 +40,7 @@ namespace ah799415MIS4200.Controllers
         // GET: Orders/Create
         public ActionResult Create()
         {
-            ViewBag.petID = new SelectList(db.Pet, "petID", "fullName");
+            ViewBag.petID = new SelectList(db.Pets, "petID", "fullName");
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace ah799415MIS4200.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "orderNum,description,orderDate,customerID")] Visits visits)
+        public ActionResult Create([Bind(Include = "visitNum,visitDescription,visitDate,petID")] Visits visits)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace ah799415MIS4200.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.customerID = new SelectList(db.Pet, "petID", "petFirstName", visits.petID);
+            ViewBag.customerID = new SelectList(db.Pets, "petID", "petFirstName", visits.petID);
             return View(visits);
         }
 
@@ -74,7 +74,7 @@ namespace ah799415MIS4200.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.petID = new SelectList(db.Pet, "petID", "petFirstName", visits. petID);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "petFirstName", visits. petID);
             return View(visits);
         }
 
@@ -83,7 +83,7 @@ namespace ah799415MIS4200.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "orderNum,description,orderDate,customerID")] Visits visits)
+        public ActionResult Edit([Bind(Include = "visitNum,visitDescription,visitDate,petID")] Visits visits)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +116,7 @@ namespace ah799415MIS4200.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Visits visits = db.Visits.Find(id);
-            db.Visits.Remove(V);
+            db.Visits.Remove(visits);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

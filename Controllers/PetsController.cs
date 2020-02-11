@@ -18,7 +18,7 @@ namespace ah799415MIS4200.Controllers
         // GET: customers
         public ActionResult Index()
         {
-            return View(db.Pet.ToList());
+            return View(db.Pets.ToList());
         }
 
         // GET: customers/Details/5
@@ -28,7 +28,7 @@ namespace ah799415MIS4200.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pet pet = db.Pet.Find(id);
+            Pet pet = db.Pets.Find(id);
             if (pet == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace ah799415MIS4200.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Pet.Add(pet);
+                db.Pets.Add(pet);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace ah799415MIS4200.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pet pet = db.Pet.Find(id);
+            Pet pet = db.Pets.Find(id);
             if (pet == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace ah799415MIS4200.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pet pet = db.Pet.Find(id);
+            Pet pet = db.Pets.Find(id);
             if (pet == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace ah799415MIS4200.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pet pet = db.Pet.Find(id);
-            db.Pet.Remove(pet);
+            Pet pet = db.Pets.Find(id);
+            db.Pets.Remove(pet);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
