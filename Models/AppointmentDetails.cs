@@ -9,6 +9,7 @@ namespace ah799415MIS4200.Models
     {
         public int appointmnetDetailID { get; set; }
         public int appointmentType { get; set; }
+
         public decimal appointmentPice { get; set; }
         // the next two properties link the orderDetail to the Order
         public int visitID { get; set; }
