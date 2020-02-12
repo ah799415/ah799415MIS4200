@@ -51,7 +51,7 @@ namespace ah799415MIS4200.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Vets.Add(vet);
+                db.Vets.Add(Vet);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -111,7 +111,7 @@ namespace ah799415MIS4200.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Vets Vet = db.Vets.Find(id);
-            db.Vets.Remove(Vets);
+            db.Vets.Remove(Vet);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

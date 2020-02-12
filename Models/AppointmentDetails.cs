@@ -16,6 +16,6 @@ namespace ah799415MIS4200.Models
         public virtual Visits Visit { get; set; }
         // the next two properties link the orderDetail to the Product
         public int vetID { get; set; }
-        public virtual Vet Vet { get; set; }
+        public virtual Vets Vets { get; set; }
     }
 }
