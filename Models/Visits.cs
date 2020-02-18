@@ -13,8 +13,10 @@ namespace ah799415MIS4200.Models
         public int visitDescription { get; set; }
         public int visitDate { get; set; }
         public int petID { get; set; }
+        public int vetsID { get; set; }
 
         public virtual Pet Pet { get; set; }
+        public virtual Vets Vets { get; set; }
 
     }
 }

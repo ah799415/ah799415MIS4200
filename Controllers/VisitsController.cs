@@ -15,14 +15,14 @@ namespace ah799415MIS4200.Controllers
     {
         private MIS4200Context db = new MIS4200Context();
 
-        // GET: Orders
+        // GET: Visits
         public ActionResult Index()
         {
-            var visits = db.Visits.Include(o => o.Pet);
+            var visits = db.Visits.Include(v => v.Pet).Include(v => v.Vets);
             return View(visits.ToList());
         }
 
-        // GET: Orders/Details/5
+        // GET: Visits/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,19 +37,20 @@ namespace ah799415MIS4200.Controllers
             return View(visits);
         }
 
-        // GET: Orders/Create
+        // GET: Visits/Create
         public ActionResult Create()
         {
-            ViewBag.petID = new SelectList(db.Pets, "petID", "fullName");
+            ViewBag.petID = new SelectList(db.Pets, "petID", "petFirstName");
+            ViewBag.vetsID = new SelectList(db.Vets, "vetsID", "vetDescription");
             return View();
         }
 
-        // POST: Orders/Create
+        // POST: Visits/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "visitNum,visitDescription,visitDate,petID")] Visits visits)
+        public ActionResult Create([Bind(Include = "visitNum,visitDescription,visitDate,petID,vetsID")] Visits visits)
         {
             if (ModelState.IsValid)
             {
@@ -58,11 +59,12 @@ namespace ah799415MIS4200.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.customerID = new SelectList(db.Pets, "petID", "petFirstName", visits.petID);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "petFirstName", visits.petID);
+            ViewBag.vetsID = new SelectList(db.Vets, "vetsID", "vetDescription", visits.vetsID);
             return View(visits);
         }
 
-        // GET: Orders/Edit/5
+        // GET: Visits/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,16 +76,17 @@ namespace ah799415MIS4200.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.petID = new SelectList(db.Pets, "petID", "petFirstName", visits. petID);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "petFirstName", visits.petID);
+            ViewBag.vetsID = new SelectList(db.Vets, "vetsID", "vetDescription", visits.vetsID);
             return View(visits);
         }
 
-        // POST: Orders/Edit/5
+        // POST: Visits/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "visitNum,visitDescription,visitDate,petID")] Visits visits)
+        public ActionResult Edit([Bind(Include = "visitNum,visitDescription,visitDate,petID,vetsID")] Visits visits)
         {
             if (ModelState.IsValid)
             {
@@ -91,11 +94,12 @@ namespace ah799415MIS4200.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.petID = new SelectList(db.Visits, "petID", "petFirstName", visits.petID);
+            ViewBag.petID = new SelectList(db.Pets, "petID", "petFirstName", visits.petID);
+            ViewBag.vetsID = new SelectList(db.Vets, "vetsID", "vetDescription", visits.vetsID);
             return View(visits);
         }
 
-        // GET: Orders/Delete/5
+        // GET: Visits/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +114,7 @@ namespace ah799415MIS4200.Controllers
             return View(visits);
         }
 
-        // POST: Orders/Delete/5
+        // POST: Visits/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

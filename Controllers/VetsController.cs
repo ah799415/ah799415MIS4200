@@ -11,107 +11,107 @@ using ah799415MIS4200.Models;
 
 namespace ah799415MIS4200.Controllers
 {
-    public class VetController : Controller
+    public class VetsController : Controller
     {
         private MIS4200Context db = new MIS4200Context();
 
-        // GET: Products
+        // GET: Vets
         public ActionResult Index()
         {
             return View(db.Vets.ToList());
         }
 
-        // GET: Products/Details/5
+        // GET: Vets/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vets Vet = db.Vets.Find(id);
-            if (Vet == null)
+            Vets vets = db.Vets.Find(id);
+            if (vets == null)
             {
                 return HttpNotFound();
             }
-            return View(Vet);
+            return View(vets);
         }
 
-        // GET: Products/Create
+        // GET: Vets/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Vets/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "vetID,vetDescription,vetCost")] Vets Vet)
+        public ActionResult Create([Bind(Include = "vetsID,vetDescription,VetCost")] Vets vets)
         {
             if (ModelState.IsValid)
             {
-                db.Vets.Add(Vet);
+                db.Vets.Add(vets);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(Vet);
+            return View(vets);
         }
 
-        // GET: Products/Edit/5
+        // GET: Vets/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vets Vet = db.Vets.Find(id);
-            if (Vet == null)
+            Vets vets = db.Vets.Find(id);
+            if (vets == null)
             {
                 return HttpNotFound();
             }
-            return View(Vet);
+            return View(vets);
         }
 
-        // POST: Products/Edit/5
+        // POST: Vets/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "vetID,vetDescription,vetCost")] Vets Vet)
+        public ActionResult Edit([Bind(Include = "vetsID,vetDescription,VetCost")] Vets vets)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(Vet).State = EntityState.Modified;
+                db.Entry(vets).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(Vet);
+            return View(vets);
         }
 
-        // GET: Products/Delete/5
+        // GET: Vets/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vets Vet = db.Vets.Find(id);
-            if (Vet == null)
+            Vets vets = db.Vets.Find(id);
+            if (vets == null)
             {
                 return HttpNotFound();
             }
-            return View(Vet);
+            return View(vets);
         }
 
-        // POST: Products/Delete/5
+        // POST: Vets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Vets Vet = db.Vets.Find(id);
-            db.Vets.Remove(Vet);
+            Vets vets = db.Vets.Find(id);
+            db.Vets.Remove(vets);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
